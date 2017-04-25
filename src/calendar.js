@@ -42,13 +42,15 @@ export default class Calendar extends React.Component {
           renderItem={this._renderItem}
           sections={[ // heterogeneous rendering between sections
             {data: [{'title': 'apple'}], key: 'dog'},
-            {data: [{'title': 'homie'}, {'title': 'dog'}], key: 'hello'},
+            {data: [{'title': '2'}, {'title': '3'}], key: 'hello'},
             {data: [{'title': 'lets do it'}, {'title': 'whatup'}], key: 'month'}
           ]}
         />
         <TouchableHighlight
           onPress={this._renderHighlight}
           underlayColor={'#d3d3d3'}
+          style={styles.day}
+          disabled={true}
         >
           <Text>
             my dude
@@ -61,6 +63,10 @@ export default class Calendar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    top: 20
+    top: 80
+  },
+  day :{
+    width: 60,
+    flex: 1
   }
 })
