@@ -43,8 +43,8 @@ export default class Calendar extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <CalendarHeader />
         <SectionList
-          ListHeaderComponent={CalendarHeader}
           keyExtractor={(item) => item.title}
           SectionSeparatorComponent={() =>
             <View style={{height: 1, backgroundColor: 'red'}} />
