@@ -1,0 +1,30 @@
+{
+  "name": "react-native-calendar",
+  "version": "1.0.0",
+  "description": "Calendar component for react-native",
+  "main": "index.js",
+  "repository": "git@github.com:ugiacoman/react-native-calendar.git",
+  "author": "Ulises Giacoman <ulises.giacoman@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src/ -d lib/"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react-native": "^1.9.1",
+    "flow-bin": "^0.44.2",
+    "react": "^16.0.0-alpha.10",
+    "react-native": "^0.43.4",
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "moment": "^2.18.1"
+  },
+  "babel": {
+    "presets": [
+      "flow",
+      "react-native"
+    ]
+  }
+}
