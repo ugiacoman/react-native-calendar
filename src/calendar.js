@@ -6,8 +6,9 @@
 
 import React from 'react'
 import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-native'
-import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import moment from 'moment-timezone'
+import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
+import CalendarHeader from './calendarHeader'
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class Calendar extends React.Component {
     return (
       <View style={styles.container}>
         <SectionList
+          ListHeaderComponent={CalendarHeader}
           keyExtractor={(item) => item.title}
           SectionSeparatorComponent={() =>
             <View style={{height: 1, backgroundColor: 'red'}} />
