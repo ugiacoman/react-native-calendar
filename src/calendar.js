@@ -7,7 +7,7 @@ export default class Calendar extends React.Component {
   render () {
     return (
       <Text>
-        bob
+        Testing
       </Text>
     )
   }
