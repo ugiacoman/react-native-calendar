@@ -26,5 +26,8 @@
       "flow",
       "react-native"
     ]
+  },
+  "standard" : {
+    "parser": "babel-eslint"
   }
 }
