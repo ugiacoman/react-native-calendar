@@ -10,11 +10,11 @@ export default class Calendar extends React.Component {
       highlight: false
     }
   }
-  
+
   _renderHighlight = () => {
     this.setState({highlight: !this.state.highlight})
   }
-  
+
   _renderItem = ({item}) => {
     return (
       <View key={item}>
@@ -39,15 +39,16 @@ export default class Calendar extends React.Component {
           SectionSeparatorComponent={() =>
             <View style={{height: 1, backgroundColor: 'red'}} />
           }
+          renderItem={this._renderItem}
           sections={[ // heterogeneous rendering between sections
-            {data: [{'title': 'apple'}], key: 'dog', renderItem: this._renderItem},
-            {data: [{'title': 'homie'}, {'title': 'dog'}], key: 'hello', renderItem: this._renderItem},
-            {data: [{'title': 'lets do it'}, {'title': 'whatup'}], key: 'month', renderItem: this._renderItem}
+            {data: [{'title': 'apple'}], key: 'dog'},
+            {data: [{'title': 'homie'}, {'title': 'dog'}], key: 'hello'},
+            {data: [{'title': 'lets do it'}, {'title': 'whatup'}], key: 'month'}
           ]}
         />
         <TouchableHighlight
           onPress={this._renderHighlight}
-          underlayColor={'d3d3d3'}
+          underlayColor={'#d3d3d3'}
         >
           <Text>
             my dude
