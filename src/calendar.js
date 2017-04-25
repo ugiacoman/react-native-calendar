@@ -1,9 +1,20 @@
 /* @flow */
 
 import React from 'react'
-import { View, Text, SectionList, StyleSheet } from 'react-native'
+import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-native'
 
 export default class Calendar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      highlight: false
+    }
+  }
+  
+  _renderHighlight = () => {
+    this.setState({highlight: !this.state.highlight})
+  }
+  
   _renderItem = ({item}) => {
     return (
       <View key={item}>
@@ -15,6 +26,12 @@ export default class Calendar extends React.Component {
   }
 
   render () {
+    let active
+    if (this.state.highlight) {
+      active = {
+        backgroundColor: '#d3d3d3'
+      }
+    }
     return (
       <View style={styles.container}>
         <SectionList
@@ -28,6 +45,14 @@ export default class Calendar extends React.Component {
             {data: [{'title': 'lets do it'}, {'title': 'whatup'}], key: 'month', renderItem: this._renderItem}
           ]}
         />
+        <TouchableHighlight
+          onPress={this._renderHighlight}
+          underlayColor={'d3d3d3'}
+        >
+          <Text>
+            my dude
+          </Text>
+        </TouchableHighlight>
       </View>
     )
   }
