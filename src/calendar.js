@@ -1,8 +1,12 @@
-/* @flow */
+/**
+ * calendar.js
+ * Parent component for Calendar component
+ * @flow
+ */
 
 import React from 'react'
 import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-native'
-import { generateData, getFirstDayOfMonth } from './lib/utility'
+import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import moment from 'moment-timezone'
 
 export default class Calendar extends React.Component {
@@ -12,11 +16,11 @@ export default class Calendar extends React.Component {
       startDate: this.props.startDate
     }
     let firstDay = getFirstDayOfMonth(this.props.startDate)
+    data = generateYearOfData(this.props.startDate)
     console.log(firstDay)
   }
 
   componentWillMount() {
-    generateData()
   }
 
   _renderItem = ({item}) => {
