@@ -2,17 +2,21 @@
 
 import React from 'react'
 import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-native'
+import { generateData, getFirstDayOfMonth } from './lib/utility'
+import moment from 'moment-timezone'
 
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      highlight: false
+      startDate: this.props.startDate
     }
+    let firstDay = getFirstDayOfMonth(this.props.startDate)
+    console.log(firstDay)
   }
 
-  _renderHighlight = () => {
-    this.setState({highlight: !this.state.highlight})
+  componentWillMount() {
+    generateData()
   }
 
   _renderItem = ({item}) => {
@@ -53,7 +57,6 @@ export default class Calendar extends React.Component {
           disabled={true}
         >
           <Text>
-            my dude
           </Text>
         </TouchableHighlight>
       </View>
