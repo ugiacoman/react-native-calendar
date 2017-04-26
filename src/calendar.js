@@ -10,6 +10,7 @@ import moment from 'moment-timezone'
 import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import CalendarHeader from './calendarHeader'
 import Month from './month'
+import Size from './lib/size'
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class Calendar extends React.Component {
       startDate: this.props.startDate,
       data: []
     }
+    this.size = Size
   }
 
   componentDidMount() {
@@ -30,25 +32,24 @@ export default class Calendar extends React.Component {
     return(
       <Month
       data={item}
+      size={this.size}
       />
     )
   }
 
   render () {
     return (
+      <View>
+        <CalendarHeader />
         <FlatList
-          style={styles.list}
           keyExtractor={(item) => item.key}
           renderItem={this._renderItem}
           data={this.state.data}
         />
+      </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  list: {
-    flex: 1,
-    overflow: 'hidden'
-  }
-})
+//
+// const styles = StyleSheet.create({
+// })

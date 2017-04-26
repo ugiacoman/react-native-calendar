@@ -5,22 +5,13 @@
 
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import Day from './day'
 export default class Month extends React.Component {
 
   _renderDays = (daysObj) => {
     let days = []
     for (const day of daysObj) {
-      console.log(day)
-      if (day.day === 0) {
-        days.push(
-          <Text key={day.key} style={styles.day}> </Text>
-        )
-      } else {
-        days.push(
-          <Text key={day.key} style={styles.day} > {day.day}</Text>
-        )
-      }
-
+      days.push(<Day key={day.key} data={day} size={this.props.size}/>)
     }
     return days
   }
@@ -29,13 +20,12 @@ export default class Month extends React.Component {
     let days = this._renderDays(this.props.data.days)
     return (
       <View>
-        <Text>
+        <Text style={{fontSize: this.props.size.month.fontSize}}>
           {this.props.data.month}
         </Text>
         <View style={styles.days}>
           {days}
         </View>
-
       </View>
     )
   }
@@ -44,9 +34,7 @@ export default class Month extends React.Component {
 const styles = StyleSheet.create({
   days: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
   },
-  day: {
-    padding: 8
-  }
 })

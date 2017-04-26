@@ -39,9 +39,11 @@ export default class CalendarHeader extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20
   },
   day: {
-    padding: 10
+    fontSize: 20
   }
 })
