@@ -19,12 +19,15 @@
     "standard": "^10.0.2"
   },
   "dependencies": {
-    "moment": "^2.18.1"
+    "moment-timezone": "^0.5.13"
   },
   "babel": {
     "presets": [
       "flow",
       "react-native"
     ]
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
