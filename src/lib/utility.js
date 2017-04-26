@@ -1,5 +1,9 @@
-import moment from 'moment-timezone'
+/**
+ * utility.js
+ * Utility methods for dealing with
+ */
 
+import moment from 'moment-timezone'
 
 /**
  * getFirstDayOfMonth()
@@ -27,7 +31,14 @@ const getFirstDayOfMonth = (date) => {
  */
 const generateYearOfData = (startDate) => {
   let data = []
-  return 'hi'
+  let months = 12
+  startDate = moment(startDate)
+  while (months > 0) {
+    const firstDay = getFirstDayOfMonth()
+
+  }
+
+  return 'data'
 }
 
 module.exports = {

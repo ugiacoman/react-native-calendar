@@ -11,7 +11,7 @@ export default class CalendarHeader extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.day}>
-          S
+          D
         </Text>
         <Text style={styles.day}>
           M
