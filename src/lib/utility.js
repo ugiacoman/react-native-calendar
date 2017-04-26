@@ -50,6 +50,7 @@ const generateYearOfData = (startDate) => {
         day: 0,
         month: currentMonth,
         year: currentYear,
+        active: false,
         key: uuid()
       }
       monthData.days.push(day)

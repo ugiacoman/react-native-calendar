@@ -5,11 +5,11 @@ export default class Day extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      highlight: false
+      active: this.props.data.day.active
     }
   }
   _onPressButton = () => {
-    this.setState({highlight: !this.state.highlight})
+    this.setState({active: !this.state.active})
   }
 
   render () {
@@ -18,7 +18,7 @@ export default class Day extends React.Component {
     }
 
     let active
-    if (this.state.highlight) {
+    if (this.state.active) {
       active = {
         backgroundColor: '#d3d3d3'
       }

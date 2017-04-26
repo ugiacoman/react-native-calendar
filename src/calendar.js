@@ -45,6 +45,7 @@ export default class Calendar extends React.Component {
           keyExtractor={(item) => item.key}
           renderItem={this._renderItem}
           data={this.state.data}
+          disableVirtualization={true}
         />
       </View>
     )
