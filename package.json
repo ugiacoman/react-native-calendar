@@ -23,7 +23,6 @@
   },
   "babel": {
     "presets": [
-      "flow",
       "react-native"
     ]
   },
