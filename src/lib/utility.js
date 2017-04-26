@@ -34,15 +34,15 @@ const generateYearOfData = (startDate) => {
   let currentDate = moment(startDate)
   while (months > 0) {
     let firstDayOfMonth = getFirstDayOfMonth(currentDate)
-    let currentMonth = currentDate.month()
+    let currentMonth = moment.monthsShort('-MMM-', currentDate.month())
     let currentYear = currentDate.year()
 
     let monthData = {
-      data: [
+      data: [{
         month: currentMonth,
         year: currentYear,
         days: []
-      ],
+      }],
       key: uuid()
     }
 
@@ -55,7 +55,7 @@ const generateYearOfData = (startDate) => {
         year: currentYear,
         key: uuid()
       }
-      monthData.data.days.push(day)
+      monthData.data[0].days.push(day)
       firstDayOfMonth -= 1
     }
 
@@ -69,7 +69,7 @@ const generateYearOfData = (startDate) => {
         year: currentYear,
         key: uuid()
       }
-      monthData.data.days.push(day)
+      monthData.data[0].days.push(day)
       currentDay += 1
     }
 

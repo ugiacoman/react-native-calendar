@@ -9,7 +9,7 @@ import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-n
 import moment from 'moment-timezone'
 import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import CalendarHeader from './calendarHeader'
-import Month from './month.js'
+import Month from './month'
 
 export default class Calendar extends React.Component {
   constructor(props) {
@@ -26,10 +26,10 @@ export default class Calendar extends React.Component {
     this.setState({data: data})
   }
 
-  _renderItem = ({month}) => {
+  _renderItem = ({item}) => {
     return(
       <Month
-      data={month}
+      data={item}
       />
     )
   }
@@ -39,6 +39,7 @@ export default class Calendar extends React.Component {
       <View style={styles.container}>
         <CalendarHeader />
         <SectionList
+          style={styles.list}
           keyExtractor={(item) => item.key}
           SectionSeparatorComponent={() =>
             <View style={{height: 1, backgroundColor: 'red'}} />
@@ -53,7 +54,10 @@ export default class Calendar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     top: 80,
-    width: 200
+  },
+  list: {
+    flex: 1
   }
 })
