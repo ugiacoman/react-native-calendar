@@ -9,28 +9,34 @@ import { View, Text, SectionList, StyleSheet, TouchableHighlight } from 'react-n
 import moment from 'moment-timezone'
 import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import CalendarHeader from './calendarHeader'
+import Month from './month.js'
 
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      startDate: this.props.startDate
+      startDate: this.props.startDate,
+      data: []
     }
-    let firstDay = getFirstDayOfMonth(this.props.startDate)
-    data = generateYearOfData(this.props.startDate)
-    console.log(firstDay)
   }
 
-  componentWillMount() {
+  // async _getData() {
+  //   let data = await
+  //   console.log(data)
+  //   return data
+  // }
+
+  componentDidMount() {
+    let data = generateYearOfData(this.props.startDate)
+    this.setState({data: data})
   }
 
-  _renderItem = ({item}) => {
-    return (
-      <View key={item}>
-        <Text key>
-          {item.title}
-        </Text>
-      </View>
+  _renderItem = ({month}) => {
+    return(
+      <Month
+      data={month}
+      />
     )
   }
 
@@ -45,26 +51,13 @@ export default class Calendar extends React.Component {
       <View style={styles.container}>
         <CalendarHeader />
         <SectionList
-          keyExtractor={(item) => item.title}
+          keyExtractor={(item) => item.key}
           SectionSeparatorComponent={() =>
             <View style={{height: 1, backgroundColor: 'red'}} />
           }
           renderItem={this._renderItem}
-          sections={[ // heterogeneous rendering between sections
-            {data: [{'title': 'apple'}], key: 'dog'},
-            {data: [{'title': '2'}, {'title': '3'}], key: 'hello'},
-            {data: [{'title': 'lets do it'}, {'title': 'whatup'}], key: 'month'}
-          ]}
+          sections={this.state.data}
         />
-        <TouchableHighlight
-          onPress={this._renderHighlight}
-          underlayColor={'#d3d3d3'}
-          style={styles.day}
-          disabled={true}
-        >
-          <Text>
-          </Text>
-        </TouchableHighlight>
       </View>
     )
   }
@@ -72,10 +65,13 @@ export default class Calendar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    top: 80
+    top: 80,
+    width: 200
   },
-  day :{
-    width: 60,
-    flex: 1
+  day : {
+    flex: 1,
+    // flexDirection: 'row',
+    width: 20,
+    height: 20,
   }
 })

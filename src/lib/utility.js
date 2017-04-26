@@ -4,6 +4,7 @@
  */
 
 import moment from 'moment-timezone'
+import uuid from 'uuid/v4'
 
 /**
  * getFirstDayOfMonth()
@@ -30,15 +31,52 @@ const getFirstDayOfMonth = (date) => {
    ]
  */
 const generateYearOfData = (startDate) => {
-  let data = []
+  let sectionData = []
   let months = 12
-  startDate = moment(startDate)
+  let currentDate = moment(startDate)
   while (months > 0) {
-    const firstDay = getFirstDayOfMonth()
+    // Get start times
+    let monthData = {
+      data: [],
+      key: uuid()
+    }
+    let firstDayOfMonth = getFirstDayOfMonth(currentDate)
+    let currentMonth = currentDate.month()
+    let currentYear = currentDate.year()
 
+    // Create the number of firstDay empty cells that we need
+    while (firstDayOfMonth > 0) {
+      let day = {
+        day: 0,
+        month: currentMonth,
+        year: currentYear,
+        key: uuid()
+      }
+      monthData.data.push(day)
+      firstDayOfMonth -= 1
+    }
+
+    // Create our regular cells
+    let currentDay = 1
+    const days = currentDate.daysInMonth()
+    while (currentDay <= days) {
+      let day = {
+        day: currentDay,
+        month: currentMonth,
+        year: currentYear,
+        key: uuid()
+      }
+      monthData.data.push(day)
+      currentDay += 1
+    }
+
+    // Add our month to aggregate data store, go on to next month
+    sectionData.push(monthData)
+    currentDate.add(1, 'month')
+    months -= 1
   }
-
-  return 'data'
+  // console.log(sectionData)
+  return sectionData
 }
 
 module.exports = {
