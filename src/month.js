@@ -1,3 +1,8 @@
+/**
+ * month.js
+ * @flow
+ */
+
 import React from 'react'
 import { View, Text } from 'react-native'
 export default class Month extends React.Component {
@@ -5,7 +10,7 @@ export default class Month extends React.Component {
     return (
       <View>
         <Text>
-        hi
+          hi
         </Text>
       </View>
     )

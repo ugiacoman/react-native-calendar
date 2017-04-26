@@ -21,12 +21,6 @@ export default class Calendar extends React.Component {
     }
   }
 
-  // async _getData() {
-  //   let data = await
-  //   console.log(data)
-  //   return data
-  // }
-
   componentDidMount() {
     let data = generateYearOfData(this.props.startDate)
     this.setState({data: data})
@@ -41,12 +35,6 @@ export default class Calendar extends React.Component {
   }
 
   render () {
-    let active
-    if (this.state.highlight) {
-      active = {
-        backgroundColor: '#d3d3d3'
-      }
-    }
     return (
       <View style={styles.container}>
         <CalendarHeader />
@@ -67,11 +55,5 @@ const styles = StyleSheet.create({
   container: {
     top: 80,
     width: 200
-  },
-  day : {
-    flex: 1,
-    // flexDirection: 'row',
-    width: 20,
-    height: 20,
   }
 })
