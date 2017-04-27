@@ -36,7 +36,7 @@ export default class Day extends React.Component {
         style={[this.styles.touch, active]}
         >
           <Text style={this.styles.text}>
-            {this.props.data.day}
+            {`${this.props.data.day}`}
           </Text>
         </TouchableHighlight>
       </View>

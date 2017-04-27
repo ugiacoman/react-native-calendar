@@ -25,7 +25,6 @@ const getFirstDayOfMonth = (date) => {
  * Each day represents a cell
  * Example Data:
    [{data: [{month: 0, year: 2017, days:[]}], key: uuid()}]
-   [{key: 'a'}, {key: 'b'}]
  */
 const generateYearOfData = (startDate) => {
   let sectionData = []
@@ -40,7 +39,7 @@ const generateYearOfData = (startDate) => {
         month: currentMonth,
         year: currentYear,
         days: [],
-        key: uuid()
+        key: `${currentYear}-${currentMonth}`
       }
 
 
@@ -65,7 +64,7 @@ const generateYearOfData = (startDate) => {
         day: currentDay,
         month: currentMonth,
         year: currentYear,
-        key: uuid()
+        key: `${currentYear}-${currentMonth}-${currentDay}`
       }
       monthData.days.push(day)
       currentDay += 1

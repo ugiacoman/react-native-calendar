@@ -26,6 +26,7 @@ export default class Month extends React.Component {
 
   _updateManager = (key) => {
     this.active.push(key)
+    console.log(key)
     if (this.active.length > 1) {
       let day = this.active[0]
       this.refs[day]._deactivate()

@@ -29,10 +29,12 @@ export default class Calendar extends React.Component {
   }
 
   _renderItem = ({item}) => {
+    console.log(item.key)
     return(
       <Month
       data={item}
       size={this.size}
+      ref={item.key}
       />
     )
   }
