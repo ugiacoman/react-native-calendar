@@ -25,7 +25,8 @@ export default class Calendar extends React.Component {
     this.rows = {}
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    console.log('mounted')
     let data = generateYearOfData(this.props.startDate)
     this.setState({data: data})
   }
@@ -47,9 +48,7 @@ export default class Calendar extends React.Component {
       let removalDay = this.active[0]
       let removalMonth = `${removalDay.split('-')[0]}-${removalDay.split('-')[1]}`
       this.rows[removalMonth]._deactivateDay(removalDay)
-      this.active.splice(0, 1);
-      console.log('item', this.state.data[0])
-      // this.refs['calendar']._renderItem(this.state.data[0])
+      this.active.splice(0, 1)
     }
 
   }
@@ -69,6 +68,3 @@ export default class Calendar extends React.Component {
     )
   }
 }
-//
-// const styles = StyleSheet.create({
-// })

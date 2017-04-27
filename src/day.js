@@ -1,3 +1,8 @@
+/**
+ * day.js
+ * @flow
+ */
+
 import React from 'react'
 import { TouchableHighlight, Text, View, StyleSheet } from 'react-native'
 
