@@ -10,6 +10,11 @@ export default class Day extends React.Component {
   }
   _onPressButton = () => {
     this.setState({active: !this.state.active})
+    this.props.updateManager(this.props.data.key)
+  }
+
+  _deactivate = () => {
+    this.setState({active: false})
   }
 
   render () {
