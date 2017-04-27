@@ -25,11 +25,8 @@ export default class Month extends React.Component {
   }
 
   _updateManager = (key) => {
-
     this.active.push(key)
-    console.log(this.active)
     if (this.active.length > 1) {
-      console.log("popping")
       let day = this.active[0]
       this.refs[day]._deactivate()
       this.active.splice(0, 1);
