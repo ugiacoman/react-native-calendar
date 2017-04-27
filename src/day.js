@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { TouchableHighlight, Text, View, StyleSheet } from 'react-native'
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native'
 
 export default class Day extends React.Component {
   constructor(props) {
@@ -34,24 +34,21 @@ export default class Day extends React.Component {
       }
     }
     return (
-      <View style={this.styles.container}>
-        <TouchableHighlight
+      <TouchableOpacity
         onPress={this._onPressButton}
         underlayColor={'#d3d3d3'}
         style={[this.styles.touch, active]}
-        >
-          <Text style={this.styles.text}>
-            {`${this.props.data.day}`}
-          </Text>
-        </TouchableHighlight>
-      </View>
+      >
+        <Text style={this.styles.text}>
+          {`${this.props.data.day}`}
+        </Text>
+      </TouchableOpacity>
     )
   }
 
   styles = {
     container: {
-      width: this.props.size.day.width,
-      height: this.props.size.day.height,
+
     },
     text: {
       top: 8,
@@ -60,6 +57,8 @@ export default class Day extends React.Component {
       fontSize: this.props.size.day.fontSize
     },
     touch: {
+      width: this.props.size.day.width,
+      height: this.props.size.day.height,
       borderRadius: this.props.size.day.height,
       overflow: 'hidden'
     }

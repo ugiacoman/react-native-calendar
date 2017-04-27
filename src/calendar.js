@@ -15,20 +15,33 @@ import Size from './lib/size'
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props)
-
+    console.log("construct")
     this.state = {
       startDate: this.props.startDate,
       data: []
     }
+
     this.size = Size
     this.active = []
     this.rows = {}
+    this.data
   }
 
   componentWillMount() {
-    console.log('mounted')
-    let data = generateYearOfData(this.props.startDate)
-    this.setState({data: data})
+    this.data = generateYearOfData(this.props.startDate)
+    this.setState({data: this.data})
+  }
+
+  _generateAnotherTwoMonthsOfData = () => {
+    console.log('Before: ', this.data[this.data.length - 1].key)
+    let lastMonth = `${this.data[this.data.length - 1].month}`
+    let dateObj = moment().month(this.data[this.data.length - 1].month).year(this.data[this.data.length - 1].year)
+    dateObj.add(1, 'months')
+    console.log(dateObj.month())
+    this.data = this.data.concat(generateYearOfData(dateObj))
+
+    // console.log('After: ', this.data, lastMonth.month())
+    this.setState({data: this.data})
   }
 
   _renderItem = ({item, index}) => {
@@ -63,6 +76,8 @@ export default class Calendar extends React.Component {
           data={this.state.data}
           ref={'calendar'}
           disableVirtualization={true}
+          removeClippedSubviews={false}
+          onEndReached={this._generateAnotherTwoMonthsOfData}
         />
       </View>
     )
