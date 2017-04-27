@@ -21,6 +21,8 @@ export default class Calendar extends React.Component {
       data: []
     }
     this.size = Size
+    this.active = []
+    this.rows = {}
   }
 
   componentDidMount() {
@@ -28,15 +30,28 @@ export default class Calendar extends React.Component {
     this.setState({data: data})
   }
 
-  _renderItem = ({item}) => {
-    console.log(item.key)
+  _renderItem = ({item, index}) => {
     return(
       <Month
       data={item}
       size={this.size}
-      ref={item.key}
+      ref={(row) => this.rows[item.key]= row}
+      updateMonthManager={this._updateManager}
       />
     )
+  }
+
+  _updateManager = (day) => {
+    this.active.push(day)
+    if (this.active.length > 1) {
+      let removalDay = this.active[0]
+      let removalMonth = `${removalDay.split('-')[0]}-${removalDay.split('-')[1]}`
+      this.rows[removalMonth]._deactivateDay(removalDay)
+      this.active.splice(0, 1);
+      console.log('item', this.state.data[0])
+      // this.refs['calendar']._renderItem(this.state.data[0])
+    }
+
   }
 
   render () {
@@ -47,6 +62,7 @@ export default class Calendar extends React.Component {
           keyExtractor={(item) => item.key}
           renderItem={this._renderItem}
           data={this.state.data}
+          ref={'calendar'}
           disableVirtualization={true}
         />
       </View>
