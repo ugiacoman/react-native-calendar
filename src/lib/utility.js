@@ -21,8 +21,7 @@ const getFirstDayOfMonth = (date) => {
  * generateYearOfData()
  * Takes in string date as YYYY-MM-DD
  * Returns array of months
- * Each month represents a sections
- * Each day represents a cell
+ * Each month represents a cell
  * Example Data:
    [{data: [{month: 0, year: 2017, days:[]}], key: uuid()}]
  */
@@ -30,6 +29,7 @@ const generateYearOfData = (startDate) => {
   let sectionData = []
   let months = 2
   let currentDate = moment(startDate)
+  let today = moment()
   while (months > 0) {
     let firstDayOfMonth = getFirstDayOfMonth(currentDate)
     let currentMonth = moment.monthsShort('-MMM-', currentDate.month())
@@ -60,10 +60,15 @@ const generateYearOfData = (startDate) => {
     let currentDay = 1
     const days = currentDate.daysInMonth()
     while (currentDay <= days) {
+      let disabled = false
+      // if (currentDay > day) {
+      //   disabled = true
+      // }
       let day = {
         day: currentDay,
         month: currentMonth,
         year: currentYear,
+        disabled: disabled,
         key: `${currentYear}-${currentMonth}-${currentDay}`
       }
       monthData.days.push(day)
@@ -75,7 +80,13 @@ const generateYearOfData = (startDate) => {
     currentDate.add(1, 'month')
     months -= 1
   }
-  // console.log(sectionData)
+
+  for (const day of sectionData[0].days) {
+    if (day.day < startDate.split('-')[2]) {
+      day.disabled = true
+    }
+  }
+
   return sectionData
 }
 

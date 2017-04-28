@@ -23,7 +23,6 @@ export default class Day extends React.Component {
   }
 
   render () {
-    console.log(this.props.data.day)
     if (this.props.data.day === 0) {
       return (<View style={{width: this.props.size.day.width}} />)
     }
