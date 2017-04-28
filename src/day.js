@@ -23,8 +23,9 @@ export default class Day extends React.Component {
   }
 
   render () {
+    console.log(this.props.data.day)
     if (this.props.data.day === 0) {
-      return (<View style={this.styles.container} />)
+      return (<View style={{width: this.props.size.day.width}} />)
     }
 
     let active
@@ -38,6 +39,7 @@ export default class Day extends React.Component {
         onPress={this._onPressButton}
         underlayColor={'#d3d3d3'}
         style={[this.styles.touch, active]}
+        disabled={this.props.data.disabled}
       >
         <Text style={this.styles.text}>
           {`${this.props.data.day}`}
@@ -47,9 +49,6 @@ export default class Day extends React.Component {
   }
 
   styles = {
-    container: {
-
-    },
     text: {
       top: 8,
       textAlign: 'center',
