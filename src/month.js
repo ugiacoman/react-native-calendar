@@ -26,9 +26,12 @@ export default class Month extends React.Component {
 
   _updateManager = (activeDay) => {
     this.active.push(activeDay)
+
     if (this.active.length > 1) {
       let removalDay = this.active[0]
-      this.refs[removalDay]._deactivate()
+      if (this.active[0] !== activeDay) {
+        this.refs[removalDay]._deactivate()
+      }
       this.active.splice(0, 1);
     }
     this.props.updateMonthManager(activeDay)
