@@ -61,9 +61,6 @@ const generateYearOfData = (startDate) => {
     const days = currentDate.daysInMonth()
     while (currentDay <= days) {
       let disabled = false
-      // if (currentDay > day) {
-      //   disabled = true
-      // }
       let day = {
         day: currentDay,
         month: currentMonth,
@@ -79,13 +76,6 @@ const generateYearOfData = (startDate) => {
     sectionData.push(monthData)
     currentDate.add(1, 'month')
     months -= 1
-  }
-
-  // disable all days prior to current day
-  for (const day of sectionData[0].days) {
-    if (day.day < currentDate.date()) {
-      day.disabled = true
-    }
   }
 
   return sectionData

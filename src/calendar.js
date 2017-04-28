@@ -23,11 +23,19 @@ export default class Calendar extends React.Component {
     this.size = Size
     this.active = []
     this.rows = {}
-    this.data
+    this.data = []
   }
 
   componentWillMount() {
     this.data = generateYearOfData(this.props.startDate)
+
+    // disable all days prior to current day
+    let currentDate = moment(this.props.startDate)
+    for (const day of this.data[0].days) {
+      if (day.day < currentDate.date()) {
+        day.disabled = true
+      }
+    }
     this.setState({data: this.data})
   }
 

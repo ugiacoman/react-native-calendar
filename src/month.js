@@ -10,7 +10,9 @@ import Day from './day'
 export default class Month extends React.Component {
   _renderDays = (daysObj) => {
     let days = []
+    let count = 0
     for (const day of daysObj) {
+
       days.push(<Day
                   key={day.key}
                   data={day}
