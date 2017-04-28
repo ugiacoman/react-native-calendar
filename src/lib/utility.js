@@ -81,6 +81,7 @@ const generateYearOfData = (startDate) => {
     months -= 1
   }
 
+  // disable all days prior to current day
   for (const day of sectionData[0].days) {
     if (day.day < currentDate.date()) {
       day.disabled = true

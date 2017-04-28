@@ -27,10 +27,15 @@ export default class Day extends React.Component {
       return (<View style={{width: this.props.size.day.width}} />)
     }
 
-    let active
+    let active, disabledStyle
     if (this.state.active) {
       active = {
         backgroundColor: '#d3d3d3'
+      }
+    }
+    if (this.props.data.disabled) {
+      disabledStyle = {
+        color: '#d3d3d3'
       }
     }
     return (
@@ -40,7 +45,7 @@ export default class Day extends React.Component {
         style={[this.styles.touch, active]}
         disabled={this.props.data.disabled}
       >
-        <Text style={this.styles.text}>
+        <Text style={[this.styles.text, disabledStyle]}>
           {`${this.props.data.day}`}
         </Text>
       </TouchableOpacity>
