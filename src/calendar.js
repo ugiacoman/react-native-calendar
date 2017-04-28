@@ -15,7 +15,6 @@ import Size from './lib/size'
 export default class Calendar extends React.Component {
   constructor(props) {
     super(props)
-    console.log("construct")
     this.state = {
       startDate: this.props.startDate,
       data: []
@@ -33,14 +32,10 @@ export default class Calendar extends React.Component {
   }
 
   _generateAnotherTwoMonthsOfData = () => {
-    console.log('Before: ', this.data[this.data.length - 1].key)
     let lastMonth = `${this.data[this.data.length - 1].month}`
     let dateObj = moment().month(this.data[this.data.length - 1].month).year(this.data[this.data.length - 1].year)
     dateObj.add(1, 'months')
-    console.log(dateObj.month())
     this.data = this.data.concat(generateYearOfData(dateObj))
-
-    // console.log('After: ', this.data, lastMonth.month())
     this.setState({data: this.data})
   }
 

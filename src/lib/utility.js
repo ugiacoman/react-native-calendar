@@ -82,7 +82,7 @@ const generateYearOfData = (startDate) => {
   }
 
   for (const day of sectionData[0].days) {
-    if (day.day < startDate.split('-')[2]) {
+    if (day.day < currentDate.date()) {
       day.disabled = true
     }
   }
