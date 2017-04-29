@@ -27,7 +27,7 @@ const getFirstDayOfMonth = (date) => {
  */
 const generateYearOfData = (startDate) => {
   let sectionData = []
-  let months = 2
+  let months = 4
   let currentDate = moment(startDate)
   let today = moment()
   while (months > 0) {

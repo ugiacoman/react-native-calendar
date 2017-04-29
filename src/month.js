@@ -6,11 +6,13 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Day from './day'
+import Week from './week'
+import uuid from 'uuid/v4'
 
 export default class Month extends React.Component {
   _renderDays = (daysObj) => {
     let days = []
-    let count = 0
+    let weeks = []
     for (const day of daysObj) {
 
       days.push(<Day
@@ -21,9 +23,14 @@ export default class Month extends React.Component {
                   updateManager={this._updateManager}
                 />
               )
+      if ((days.length % 7 === 0)) {
+        weeks.push(<Week key={uuid()} days={days} />)
+        days = []
+      }
     }
+    weeks.push(<Week key={uuid()} days={days} />)
     this.active = []
-    return days
+    return weeks
   }
 
   _updateManager = (activeDay) => {
@@ -50,18 +57,10 @@ export default class Month extends React.Component {
         <Text style={{fontSize: this.props.size.month.fontSize}}>
           {this.props.data.month}
         </Text>
-        <View style={styles.days}>
+        <View>
           {days}
         </View>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  days: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-  },
-})

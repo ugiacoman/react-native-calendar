@@ -82,9 +82,10 @@ export default class Calendar extends React.Component {
           ref={'calendar'}
           disableVirtualization={true}
           removeClippedSubviews={false}
-          onEndReached={this._generateAnotherTwoMonthsOfData}
         />
       </View>
     )
   }
 }
+
+          // onEndReached={this._generateAnotherTwoMonthsOfData}
