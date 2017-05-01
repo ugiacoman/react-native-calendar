@@ -76,14 +76,7 @@ export default class Calendar extends React.Component {
     } else {
       this.props.noneSelected()
     }
-
-
-
   }
-
-
-
-
   render () {
     return (
       <View>

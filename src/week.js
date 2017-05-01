@@ -3,19 +3,8 @@ import { View, StyleSheet } from 'react-native'
 
 export default class Week extends React.Component {
   render () {
-    let justifyContentStyle
-    if (this.props.days.length === 7) {
-      justifyContentStyle = {
-        justifyContent: 'space-between'
-      }
-    } else {
-      justifyContentStyle = {
-        justifyContent: 'flex-start'
-
-      }
-    }
     return (
-      <View style={[styles.rowContainer, justifyContentStyle]}>
+      <View style={styles.rowContainer}>
         {this.props.days}
       </View>
     )
@@ -24,6 +13,7 @@ export default class Week extends React.Component {
 const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     flexWrap: 'wrap'
   }
 })
