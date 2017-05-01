@@ -21,6 +21,7 @@ export default class Month extends React.Component {
                   ref={day.key}
                   updateManager={this._updateManager}
                   invertColor={this.props.invertColor}
+                  selectColor={this.props.selectColor}
                 />
               )
       if ((days.length % 7 === 0)) {

@@ -55,6 +55,7 @@ export default class Calendar extends React.Component {
         ref={(row) => this.rows[item.key] = row}
         updateMonthManager={this._updateManager}
         invertColor={this.props.invertColor}
+        selectColor={this.props.selectColor}
       />
     )
   }

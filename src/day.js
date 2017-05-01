@@ -10,7 +10,7 @@ export default class Day extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      active: this.props.data.day.active
+      active: false
     }
   }
   _onPressButton = () => {
@@ -24,13 +24,13 @@ export default class Day extends React.Component {
 
   render () {
     if (this.props.data.day === 0) {
-      return (<View style={{width: 40}} />)
+      return (<View style={{width: this.props.size.day.size}} />)
     }
 
     let active, disabledStyle, invert
     if (this.state.active) {
       active = {
-        backgroundColor: '#d3d3d3'
+        backgroundColor: this.props.selectColor
       }
       invert = {
         color: this.props.invertColor
@@ -44,9 +44,9 @@ export default class Day extends React.Component {
     return (
       <TouchableOpacity
         onPress={this._onPressButton}
-        underlayColor={'#d3d3d3'}
         style={[this.styles.touch, active]}
         disabled={this.props.data.disabled}
+        underlayColor={'#red'}
       >
         <Text style={[this.styles.text, disabledStyle, invert]}>
           {`${this.props.data.day}`}
@@ -57,17 +57,19 @@ export default class Day extends React.Component {
   styles = {
     text: {
       textAlign: 'center',
+      fontWeight: '500',
       fontSize: this.props.size.day.fontSize,
       width: this.props.size.day.size,
       height: this.props.size.day.size,
-      lineHeight: this.props.size.day.size,
-      fontWeight: '500'
+      lineHeight: this.props.size.day.size
     },
     touch: {
+      marginTop: this.props.size.day.margin,
+      marginBottom: this.props.size.day.margin,
+      overflow: 'hidden',
       width: this.props.size.day.size,
       height: this.props.size.day.size,
-      borderRadius: this.props.size.day.size/2,
-      overflow: 'hidden'
+      borderRadius: this.props.size.day.size/2
     }
   }
 }

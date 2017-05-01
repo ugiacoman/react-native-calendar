@@ -1,7 +1,9 @@
+import { Dimensions } from 'react-native'
 const Size = {
   day: {
-    size: 40,
-    fontSize: 15
+    size: Dimensions.get('window').width/8,
+    fontSize: Dimensions.get('window').width/18,
+    margin: Dimensions.get('window').width/200
   },
   month: {
     fontSize: 30
