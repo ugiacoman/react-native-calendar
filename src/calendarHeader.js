@@ -41,9 +41,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20
+    padding: 4
   },
   day: {
-    fontSize: 20
+    textAlign: 'center',
+    fontSize: 20,
+    width: 40,
+    height: 40,
+    lineHeight: 40
   }
 })

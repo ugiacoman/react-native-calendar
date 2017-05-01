@@ -55,6 +55,7 @@ export default class Day extends React.Component {
   styles = {
     text: {
       textAlign: 'center',
+      fontSize: 20,
       width: 40,
       height: 40,
       lineHeight: 40

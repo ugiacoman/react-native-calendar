@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import Day from './day'
 import Week from './week'
 import uuid from 'uuid/v4'
@@ -52,7 +52,7 @@ export default class Month extends React.Component {
   render () {
     let days = this._renderDays(this.props.data.days)
     return (
-      <View>
+      <View style={{padding: 4}}>
         <Text style={{fontSize: this.props.size.month.fontSize}}>
           {this.props.data.month}
         </Text>

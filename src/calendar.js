@@ -87,6 +87,7 @@ export default class Calendar extends React.Component {
           data={this.state.data}
           ref={'calendar'}
           disableVirtualization
+          ItemSeparatorComponent={()=> <View style={{height: 40}} />}
           removeClippedSubviews={false}
         />
       </View>
