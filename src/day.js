@@ -27,10 +27,13 @@ export default class Day extends React.Component {
       return (<View style={{width: 40}} />)
     }
 
-    let active, disabledStyle
+    let active, disabledStyle, invert
     if (this.state.active) {
       active = {
         backgroundColor: '#d3d3d3'
+      }
+      invert = {
+        color: this.props.invertColor
       }
     }
     if (this.props.data.disabled) {
@@ -45,25 +48,25 @@ export default class Day extends React.Component {
         style={[this.styles.touch, active]}
         disabled={this.props.data.disabled}
       >
-        <Text style={[this.styles.text, disabledStyle]}>
+        <Text style={[this.styles.text, disabledStyle, invert]}>
           {`${this.props.data.day}`}
         </Text>
       </TouchableOpacity>
     )
   }
-
   styles = {
     text: {
       textAlign: 'center',
-      fontSize: 20,
-      width: 40,
-      height: 40,
-      lineHeight: 40
+      fontSize: this.props.size.day.fontSize,
+      width: this.props.size.day.size,
+      height: this.props.size.day.size,
+      lineHeight: this.props.size.day.size,
+      fontWeight: '500'
     },
     touch: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
+      width: this.props.size.day.size,
+      height: this.props.size.day.size,
+      borderRadius: this.props.size.day.size/2,
       overflow: 'hidden'
     }
   }

@@ -1,8 +1,7 @@
 const Size = {
   day: {
-    fontSize: 30,
-    width: 53,
-    height: 53
+    size: 40,
+    fontSize: 15
   },
   month: {
     fontSize: 30

@@ -15,11 +15,12 @@ export default class Month extends React.Component {
     let weeks = []
     for (const day of daysObj) {
       days.push(<Day
-        key={day.key}
-        data={day}
-        size={this.props.size}
-        ref={day.key}
-        updateManager={this._updateManager}
+                  key={day.key}
+                  data={day}
+                  size={this.props.size}
+                  ref={day.key}
+                  updateManager={this._updateManager}
+                  invertColor={this.props.invertColor}
                 />
               )
       if ((days.length % 7 === 0)) {

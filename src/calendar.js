@@ -54,6 +54,7 @@ export default class Calendar extends React.Component {
         // eslint-disable-next-line
         ref={(row) => this.rows[item.key] = row}
         updateMonthManager={this._updateManager}
+        invertColor={this.props.invertColor}
       />
     )
   }
