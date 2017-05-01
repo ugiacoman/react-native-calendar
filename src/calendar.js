@@ -91,6 +91,7 @@ export default class Calendar extends React.Component {
           disableVirtualization
           ItemSeparatorComponent={()=> <View style={{height: 40}} />}
           removeClippedSubviews={false}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     )
