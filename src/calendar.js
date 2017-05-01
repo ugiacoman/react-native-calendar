@@ -60,6 +60,7 @@ export default class Calendar extends React.Component {
 
   _updateManager = (day) => {
     this.active.push(day)
+    this.props.selectedDate(day)
     if (this.active.length > 1) {
       let removalDay = this.active[0]
       let removalMonth = `${removalDay.split('-')[0]}-${removalDay.split('-')[1]}`
@@ -69,6 +70,9 @@ export default class Calendar extends React.Component {
       this.active.splice(0, 1)
     }
   }
+
+
+
 
   render () {
     return (
