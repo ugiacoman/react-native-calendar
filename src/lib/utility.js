@@ -17,6 +17,16 @@ const getFirstDayOfMonth = (date) => {
 }
 
 /**
+ * getLastDayOfMonth()
+ * Takes in string date as YYYY-MM-DD
+ * Returns first day of the month
+ * 0 is Sunday, 6 is Saturday
+ */
+const getLastDayOfMonth = (date) => {
+  return moment(date).endOf('month').day()
+}
+
+/**
  * generateYearOfData()
  * Takes in string date as YYYY-MM-DD
  * Returns array of months
@@ -68,13 +78,27 @@ const generateYearOfData = (startDate) => {
       monthData.days.push(day)
       currentDay += 1
     }
+    // Add padding to end
+    let lastDay = moment().date(monthData.days[monthData.days.length - 1].day).month(monthData.month).year(monthData.year)
+    let lastDayOfMonth = getLastDayOfMonth(lastDay)
+    while (lastDayOfMonth < 6) {
+      let day = {
+        day: 0,
+        month: currentMonth,
+        year: currentYear,
+        active: false,
+        key: uuid()
+      }
+      monthData.days.push(day)
+      lastDayOfMonth += 1
+    }
 
     // Add our month to aggregate data store, go on to next month
     sectionData.push(monthData)
     currentDate.add(1, 'month')
     months -= 1
   }
-
+  console.log(sectionData)
   return sectionData
 }
 

@@ -24,7 +24,7 @@ export default class Day extends React.Component {
 
   render () {
     if (this.props.data.day === 0) {
-      return (<View style={{width: this.props.size.day.width}} />)
+      return (<View style={{width: 20}} />)
     }
 
     let active, disabledStyle
@@ -54,15 +54,15 @@ export default class Day extends React.Component {
 
   styles = {
     text: {
-      top: 8,
       textAlign: 'center',
-      height: this.props.size.day.height,
-      fontSize: this.props.size.day.fontSize
+      width: 20,
+      height: 20,
+      lineHeight: 20
     },
     touch: {
-      width: this.props.size.day.width,
-      height: this.props.size.day.height,
-      borderRadius: this.props.size.day.height,
+      width: 20,
+      height: 20,
+      borderRadius: 20,
       overflow: 'hidden'
     }
   }
