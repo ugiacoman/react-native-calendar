@@ -1,17 +1,17 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 export default class Week extends React.Component {
   render () {
+    let justifyContentStyle
     if (this.props.days.length === 7) {
       justifyContentStyle = {
         justifyContent: 'space-between'
       }
-    }
-    else {
+    } else {
       justifyContentStyle = {
         justifyContent: 'flex-start'
-        
+
       }
     }
     return (
@@ -24,7 +24,6 @@ export default class Week extends React.Component {
 const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-
+    flexWrap: 'wrap'
   }
 })

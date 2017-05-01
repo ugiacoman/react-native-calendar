@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import Day from './day'
 import Week from './week'
 import uuid from 'uuid/v4'
@@ -14,13 +14,12 @@ export default class Month extends React.Component {
     let days = []
     let weeks = []
     for (const day of daysObj) {
-
       days.push(<Day
-                  key={day.key}
-                  data={day}
-                  size={this.props.size}
-                  ref={day.key}
-                  updateManager={this._updateManager}
+        key={day.key}
+        data={day}
+        size={this.props.size}
+        ref={day.key}
+        updateManager={this._updateManager}
                 />
               )
       if ((days.length % 7 === 0)) {
@@ -41,7 +40,7 @@ export default class Month extends React.Component {
       if (this.active[0] !== activeDay) {
         this.refs[removalDay]._deactivate()
       }
-      this.active.splice(0, 1);
+      this.active.splice(0, 1)
     }
     this.props.updateMonthManager(activeDay)
   }

@@ -16,7 +16,6 @@ const getFirstDayOfMonth = (date) => {
   return moment(date).startOf('month').day()
 }
 
-
 /**
  * generateYearOfData()
  * Takes in string date as YYYY-MM-DD
@@ -36,12 +35,11 @@ const generateYearOfData = (startDate) => {
     let currentYear = currentDate.year()
 
     let monthData = {
-        month: currentMonth,
-        year: currentYear,
-        days: [],
-        key: `${currentYear}-${currentMonth}`
-      }
-
+      month: currentMonth,
+      year: currentYear,
+      days: [],
+      key: `${currentYear}-${currentMonth}`
+    }
 
     // Create the number of firstDay empty cells that we need
     while (firstDayOfMonth > 0) {

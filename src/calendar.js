@@ -5,15 +5,15 @@
  */
 
 import React from 'react'
-import { View, Text, FlatList, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, FlatList } from 'react-native'
 import moment from 'moment-timezone'
-import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
+import { generateYearOfData } from './lib/utility'
 import CalendarHeader from './calendarHeader'
 import Month from './month'
 import Size from './lib/size'
 
 export default class Calendar extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       startDate: this.props.startDate,
@@ -26,7 +26,7 @@ export default class Calendar extends React.Component {
     this.data = []
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.data = generateYearOfData(this.props.startDate)
 
     // disable all days prior to current day
@@ -40,7 +40,6 @@ export default class Calendar extends React.Component {
   }
 
   _generateAnotherTwoMonthsOfData = () => {
-    let lastMonth = `${this.data[this.data.length - 1].month}`
     let dateObj = moment().month(this.data[this.data.length - 1].month).year(this.data[this.data.length - 1].year)
     dateObj.add(1, 'months')
     this.data = this.data.concat(generateYearOfData(dateObj))
@@ -48,12 +47,13 @@ export default class Calendar extends React.Component {
   }
 
   _renderItem = ({item, index}) => {
-    return(
+    return (
       <Month
-      data={item}
-      size={this.size}
-      ref={(row) => this.rows[item.key]= row}
-      updateMonthManager={this._updateManager}
+        data={item}
+        size={this.size}
+        // eslint-disable-next-line
+        ref={(row) => this.rows[item.key] = row}
+        updateMonthManager={this._updateManager}
       />
     )
   }
@@ -68,7 +68,6 @@ export default class Calendar extends React.Component {
       }
       this.active.splice(0, 1)
     }
-
   }
 
   render () {
@@ -80,12 +79,10 @@ export default class Calendar extends React.Component {
           renderItem={this._renderItem}
           data={this.state.data}
           ref={'calendar'}
-          disableVirtualization={true}
+          disableVirtualization
           removeClippedSubviews={false}
         />
       </View>
     )
   }
 }
-
-          // onEndReached={this._generateAnotherTwoMonthsOfData}

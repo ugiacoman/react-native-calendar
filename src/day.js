@@ -4,10 +4,10 @@
  */
 
 import React from 'react'
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native'
+import { TouchableOpacity, Text, View } from 'react-native'
 
 export default class Day extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       active: this.props.data.day.active
