@@ -41,9 +41,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 4
+    padding: 4,
+    borderBottomWidth: 1
   },
   day: {
+    backgroundColor: 'transparent',
     textAlign: 'center',
     fontSize: 20,
     width: 40,
