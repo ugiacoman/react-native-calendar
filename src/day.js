@@ -54,21 +54,22 @@ export default class Day extends React.Component {
       </TouchableOpacity>
     )
   }
+  // Add text vertiacal for android
   styles = {
     text: {
       textAlign: 'center',
+      textAlignVertical: 'center',
       fontWeight: '500',
       fontSize: this.props.size.day.fontSize,
       width: this.props.size.day.size,
-      height: this.props.size.day.size,
-      lineHeight: this.props.size.day.size
     },
     touch: {
       marginTop: this.props.size.day.margin,
       marginBottom: this.props.size.day.margin,
       overflow: 'hidden',
       width: this.props.size.day.size,
-      height: this.props.size.day.size,
+      paddingTop: this.props.size.day.size/5,
+      paddingBottom: this.props.size.day.size/5,
       borderRadius: this.props.size.day.size/2
     }
   }

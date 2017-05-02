@@ -98,7 +98,6 @@ const generateYearOfData = (startDate) => {
     currentDate.add(1, 'month')
     months -= 1
   }
-  console.log(sectionData)
   return sectionData
 }
 
