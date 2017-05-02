@@ -57,6 +57,7 @@ export default class Day extends React.Component {
   // Add text vertiacal for android
   styles = {
     text: {
+      backgroundColor: 'transparent',
       textAlign: 'center',
       textAlignVertical: 'center',
       fontWeight: '500',
