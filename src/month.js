@@ -55,7 +55,7 @@ export default class Month extends React.Component {
     let days = this._renderDays(this.props.data.days)
     return (
       <View style={{padding: 4}}>
-        <Text style={{ fontSize: this.props.size.month.fontSize, backgroundColor: 'transparent'}}>
+        <Text style={this.styles.text}>
           {this.props.data.month}
         </Text>
         <View>
@@ -64,4 +64,15 @@ export default class Month extends React.Component {
       </View>
     )
   }
+
+  styles = {
+    text: {
+      fontSize: this.props.size.month.fontSize,
+      marginLeft: this.props.size.month.marginLeft,
+      marginRight: this.props.size.month.marginRight,
+      backgroundColor: 'transparent',
+      color: '#fff'
+    }
+  }
+
 }

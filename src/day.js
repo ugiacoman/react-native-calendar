@@ -38,7 +38,7 @@ export default class Day extends React.Component {
     }
     if (this.props.data.disabled) {
       disabledStyle = {
-        color: '#d3d3d3'
+        color: '#9E9E9E'
       }
     }
     return (
@@ -61,6 +61,7 @@ export default class Day extends React.Component {
       textAlign: 'center',
       textAlignVertical: 'center',
       fontWeight: '500',
+      color: '#fff',
       fontSize: this.props.size.day.fontSize,
       width: this.props.size.day.size,
     },
