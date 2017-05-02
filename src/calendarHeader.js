@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 4,
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    borderColor: '#fff'
   },
   day: {
     backgroundColor: 'transparent',
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: 40,
     height: 40,
-    lineHeight: 40
+    lineHeight: 40,
+    color: '#fff'
   }
 })

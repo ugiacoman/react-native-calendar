@@ -6,7 +6,9 @@ const Size = {
     margin: Math.round(Dimensions.get('window').width/200)
   },
   month: {
-    fontSize: 30
+    fontSize: Math.round(Dimensions.get('window').width/18),
+    marginLeft: Math.round(Dimensions.get('window').width/200),
+    marginRight: Math.round(Dimensions.get('window').width/200)
   }
 }
 
