@@ -26,6 +26,10 @@ export default class Calendar extends React.Component {
     this.data = []
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return false
+  }
+
   componentWillMount () {
     this.data = generateYearOfData(this.props.startDate)
 
