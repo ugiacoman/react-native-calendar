@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, StyleSheet } from 'react-native'
 import moment from 'moment-timezone'
 import { generateYearOfData } from './lib/utility'
 import CalendarHeader from './calendarHeader'
@@ -81,7 +81,7 @@ export default class Calendar extends React.Component {
   }
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         <CalendarHeader />
         <FlatList
           keyExtractor={(item) => item.key}
@@ -90,10 +90,15 @@ export default class Calendar extends React.Component {
           ref={'calendar'}
           disableVirtualization
           ItemSeparatorComponent={()=> <View style={{height: 40}} />}
-          removeClippedSubviews={false}
           showsVerticalScrollIndicator={false}
         />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
