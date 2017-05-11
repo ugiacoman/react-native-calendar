@@ -40,6 +40,12 @@ export default class Calendar extends React.Component {
         day.disabled = true
       }
     }
+    // select first day
+    this.data[0].days[currentDate.date()].active = true
+    let day = this.data[0].days[currentDate.date()].key
+    this.active.push(day)
+    this.props.selectedDate(day)
+
     this.setState({data: this.data})
   }
 
@@ -80,7 +86,7 @@ export default class Calendar extends React.Component {
     if (this.active.length == 1 ) {
       this.props.selectedDate(day)
     } else {
-      this.props.noneSelected()
+      this.props.selectedDate('')
     }
   }
   render () {
@@ -95,6 +101,7 @@ export default class Calendar extends React.Component {
           disableVirtualization
           ItemSeparatorComponent={()=> <View style={{height: 40}} />}
           showsVerticalScrollIndicator={false}
+          removeClippedSubviews={false}
         />
       </View>
     )
