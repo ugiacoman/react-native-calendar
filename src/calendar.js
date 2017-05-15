@@ -13,20 +13,20 @@ import Month from './month'
 import Size from './lib/size'
 
 export default class Calendar extends React.Component {
+  size = Size
+  active = []
+  rows = {}
+  data = []
+
   constructor (props) {
     super(props)
     this.state = {
       startDate: this.props.startDate,
       data: []
     }
-
-    this.size = Size
-    this.active = []
-    this.rows = {}
-    this.data = []
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate (nextProps, nextState) {
     return false
   }
 
@@ -83,7 +83,7 @@ export default class Calendar extends React.Component {
       }
       this.active.splice(0, 1)
     }
-    if (this.active.length == 1 ) {
+    if (this.active.length === 1) {
       this.props.selectedDate(day)
     } else {
       this.props.selectedDate('')
@@ -99,7 +99,7 @@ export default class Calendar extends React.Component {
           data={this.state.data}
           ref={'calendar'}
           disableVirtualization
-          ItemSeparatorComponent={()=> <View style={{height: 40}} />}
+          ItemSeparatorComponent={() => <View style={{height: 40}} />}
           showsVerticalScrollIndicator={false}
           removeClippedSubviews={false}
         />
