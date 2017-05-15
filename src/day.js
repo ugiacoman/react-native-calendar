@@ -63,16 +63,16 @@ export default class Day extends React.Component {
       fontWeight: '500',
       color: '#fff',
       fontSize: this.props.size.day.fontSize,
-      width: this.props.size.day.size,
+      width: this.props.size.day.size
     },
     touch: {
       marginTop: this.props.size.day.margin,
       marginBottom: this.props.size.day.margin,
       overflow: 'hidden',
       width: this.props.size.day.size,
-      paddingTop: this.props.size.day.size/5,
-      paddingBottom: this.props.size.day.size/5,
-      borderRadius: this.props.size.day.size/2
+      paddingTop: this.props.size.day.size / 5,
+      paddingBottom: this.props.size.day.size / 5,
+      borderRadius: this.props.size.day.size / 2
     }
   }
 }

@@ -10,18 +10,20 @@ import Week from './week'
 import uuid from 'uuid/v4'
 
 export default class Month extends React.Component {
+  active = []
   _renderDays = (daysObj) => {
     let days = []
     let weeks = []
+
     for (const day of daysObj) {
       days.push(<Day
-                  key={day.key}
-                  data={day}
-                  size={this.props.size}
-                  ref={day.key}
-                  updateManager={this._updateManager}
-                  invertColor={this.props.invertColor}
-                  selectColor={this.props.selectColor}
+        key={day.key}
+        data={day}
+        size={this.props.size}
+        ref={day.key}
+        updateManager={this._updateManager}
+        invertColor={this.props.invertColor}
+        selectColor={this.props.selectColor}
                 />
               )
       if ((days.length % 7 === 0)) {
@@ -30,7 +32,6 @@ export default class Month extends React.Component {
       }
     }
     weeks.push(<Week key={uuid()} days={days} />)
-    this.active = []
     return weeks
   }
 
@@ -74,5 +75,4 @@ export default class Month extends React.Component {
       color: '#fff'
     }
   }
-
 }
