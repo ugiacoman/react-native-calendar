@@ -1,6 +1,5 @@
 /**
  * day.js
- * @flow
  */
 
 import React from 'react'

@@ -1,7 +1,6 @@
 /**
  * calendar.js
  * Parent component for Calendar component
- * @flow
  */
 
 import React from 'react'
