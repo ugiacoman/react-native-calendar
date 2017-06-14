@@ -6,7 +6,7 @@
 import React from 'react'
 import { View, FlatList, StyleSheet } from 'react-native'
 import moment from 'moment-timezone'
-import { generateYearOfData } from './lib/utility'
+import { generateYearOfData, getFirstDayOfMonth } from './lib/utility'
 import CalendarHeader from './calendarHeader'
 import Month from './month'
 import Size from './lib/size'
@@ -31,7 +31,6 @@ export default class Calendar extends React.Component {
 
   componentWillMount () {
     this.data = generateYearOfData(this.props.startDate)
-
     // disable all days prior to current day
     let currentDate = moment(this.props.startDate)
     for (const day of this.data[0].days) {
@@ -39,11 +38,16 @@ export default class Calendar extends React.Component {
         day.disabled = true
       }
     }
-    // select first day
-    this.data[0].days[currentDate.date()].active = true
-    let day = this.data[0].days[currentDate.date()].key
-    this.active.push(day)
-    this.props.selectedDate(day)
+    /* select first day
+    * getFirstDayOfMonth returns the number of offset days for the month
+    * subtract 1 for index
+    * add padding to currentDate to go to correct index in days array
+    */
+    let padding = getFirstDayOfMonth(currentDate) - 1
+    let day = this.data[0].days[currentDate.date() + padding]
+    day.active = true
+    this.active.push(day.key)
+    this.props.selectedDate(day.key)
 
     this.setState({data: this.data})
   }
